@@ -1,0 +1,68 @@
+<div class="well">
+	<form novalidate name="loginForm" class="form-horizontal col-sm-offset-3">
+		<legend class="col-sm-8">
+			<h2 class="form-login-heading">用户登录</h2>
+		</legend>
+		<div class="clearfix"></div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">电子邮件地址：</label>
+			<div class="col-sm-4">
+				<input type="email" class="form-control" name="name" 
+					ng-model="loginData.name" required autofocus ng-maxlength="50">
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="loginForm.name.$error.required">
+
+			        *
+
+        		 </span>
+				<span ng-show="loginForm.name.$error.maxlength">
+
+        		 	最大长度50个字符
+
+        		 </span>
+				<span ng-show="loginForm.name.$error.email">
+
+        		 	电子邮件格式错误
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">密码：</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" name="password" ng-model="loginData.password" ng-minlength="6" ng-maxlength="50" required>
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="loginForm.password.$error.required">
+
+			        *
+
+        		 </span>
+				<span ng-show="loginForm.password.$error.maxlength">
+
+        		 	最大长度50个字符
+
+        		 </span>
+				<span ng-show="loginForm.password.$error.minlength">
+
+        		 	最小长度6个字符
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-4">
+				<button class="btn btn-primary" type="submit" ng-click="login()" ng-disabled="loginForm.$invalid">
+					登录
+				</button>
+				<a href="#/" class="btn btn-default">返回首页</a>
+			</div>
+		</div>
+		<div class="form-group" ng-if="loginError">
+			<div class="col-sm-offset-2 col-sm-4 form-control-static error">
+				{{loginError}}
+			</div>
+		</div>
+	</form>
+</div>

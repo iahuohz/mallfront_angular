@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="shopping">
+	<title>网上书城前端网站</title>
+	<link rel="stylesheet" href="contents/bootstrap/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="contents/messenger/messenger.css" />
+	<link rel="stylesheet" href="contents/messenger/messenger-theme-future.css" />
+	<link rel="stylesheet" href="contents/stylesheets/site.css" />
+	<script src="contents/jquery/jquery-2.1.0.min.js"></script>
+	<script src="contents/bootstrap/js/bootstrap.min.js"></script>
+	<script src="contents/messenger/messenger.min.js"></script>
+	<script src="contents/angular/angular.js"></script>
+	<script src="contents/angular/angular-route.js"></script>
+	<script src="contents/angular/angular-local-storage.min.js"></script>
+	<script src="contents/angular/angular-locale_zh-cn.js"></script>
+	<script src="contents/angular/angular-cookies.min.js"></script>
+	<script src="index.js"></script>
+	<script src="filters/pageFilter.js"></script>
+	<script src="services/catalog.js"></script>
+	<script src="services/cart.js"></script>
+	<script src="services/account.js"></script>
+	<script src="directives/cartSummary.js"></script>
+	<script src="directives/loginStatus.js"></script>
+	<script src="directives/compareTo.js"></script>
+	<script src="controllers/rootController.js"></script>
+	<script src="controllers/catalogController.js"></script>
+	<script src="controllers/bookController.js"></script>
+	<script src="controllers/cartController.js"></script>
+	<script src="controllers/accountController.js"></script>
+	<script>
+		
+	</script>
+	<body class="container" ng-controller="rootCtrl">
+		<div class="navbar navbar-inverse">
+			<a href="/#/">
+                <img src="contents/images/eeglogo2.png" class="img-responsive navbar-logo" alt="EEG Logo" />
+            </a>
+            <span class="navbar-brand">Cool Book网上书店</span>
+            <div class="navbar-right">
+            	<cart-summary></cart-summary> 		<!--angualrjs自动组合cart-summary为cartSummary -->
+            	<login-status></login-status>      
+            </div>
+	    </div>
+	    <div>
+        	<ng-view></ng-view>
+    	</div>
+    	<div class='clearfix'></div>
+    	<div>
+			<hr />
+			<p class="text-center">
+			    <img src="contents/images/eeglogo2.png" style="width:100px" />
+			    <span class="bottom">2015 北京中软国际教育科技有限公司 &middot; 卓越工程组</span>
+			</p>
+		</div>
+	</body>
+</html>

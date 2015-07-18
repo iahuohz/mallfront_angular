@@ -1,0 +1,102 @@
+<div class="well">
+	<form novalidate name="registerForm" class="form-horizontal col-sm-offset-3">
+		<legend class="col-sm-8">
+			<h2 class="form-login-heading">用户注册</h2>
+		</legend>
+		<div class="clearfix"></div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">电子邮件地址：</label>
+			<div class="col-sm-4">
+				<input type="email" class="form-control" name="name" 
+					ng-model="registration.name" required autofocus ng-maxlength="50"
+					ng-change="checkname(registerForm.name.$valid)">
+			</div>
+			<div class="form-control-static" ng-if="registerForm.name.$valid && name.ready">
+				<i class="glyphicon glyphicon-ok-circle text-success"></i>
+			</div>
+			<div class="form-control-static error" ng-if="registerForm.name.$valid && !(name.ready)">
+				<i class="glyphicon glyphicon-remove-circle"></i>
+				该电子邮件已经被使用！
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="registerForm.name.$error.required">
+
+			        *
+
+        		 </span>
+				<span ng-show="registerForm.name.$error.maxlength">
+
+        		 	最大长度50个字符
+
+        		 </span>
+				<span ng-show="registerForm.name.$error.email">
+
+        		 	电子邮件格式错误
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">昵称：</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" name="nick" ng-model="registration.nick" required ng-maxlength="50">
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="registerForm.nick.$error.required">
+
+			        *
+
+        		 </span>
+				<span ng-show="registerForm.nick.$error.maxlength">
+
+        		 	最大长度50个字符
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">密码：</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" name="password" ng-model="registration.password" ng-minlength="6" ng-maxlength="50" required>
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="registerForm.password.$error.required">
+
+			        *
+
+        		 </span>
+				<span ng-show="registerForm.password.$error.maxlength">
+
+        		 	最大长度50个字符
+
+        		 </span>
+				<span ng-show="registerForm.password.$error.minlength">
+
+        		 	最小长度6个字符
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label">确认密码：</label>
+			<div class="col-sm-4">
+				<input type="password" class="form-control" name="confirmPassword" ng-model="registration.confirmPassword" required compare-to="registration.password">
+			</div>
+			<div class="form-control-static error">
+				<span ng-show="registerForm.confirmPassword.$error.compareTo">
+
+        		 	密码输入不一致
+
+        		 </span>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-4">
+				<button class="btn btn-primary" type="submit" ng-click="register()" ng-disabled="registerForm.$invalid">
+					注册
+				</button>
+				<a href="#/" class="btn btn-default">返回首页</a>
+			</div>
+		</div>
+	</form>
+</div>

@@ -1,0 +1,64 @@
+<table class="table table-striped">
+	<caption>
+		<h3><strong>我的订单</strong></h3>
+	</caption>
+	<tbody ng-if="!orders.length">
+		<tr>
+			<td>
+				<h4 class="text-center">
+					您没有历史订单
+				</h4>
+			</td>
+		</tr>
+	</tbody>
+	<thead ng-if="orders.length">
+		<tr>
+			<th>订单日期</th>
+			<th>订单总额</th>
+			<th>收货人信息</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="order in orders">
+			<td>{{order.orderDate | date:"yyyy-MM-dd HH:mm"}}</td>
+			<td>{{order.total | currency}}</td>
+			<td>{{order.contact.name}}, {{order.contact.address}}, {{order.contact.postalcode}}, {{order.contact.phone}}</td>
+			<td>
+				<button class="btn btn-success btn-sm" ng-click="selectOrder(order)">详情</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div id="orderDetailsDiv" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"><strong>订单详情</strong></h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th class="text-center">书名</th>
+							<th class="text-center">数量</th>
+							<th class="text-right">价格</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in selectedOrder.orderItems">
+							<td class="text-center">
+								<a href="/#/book/{{item._id}}" target="_blank">{{item.title}}</a>
+							</td>
+							<td class="text-center">{{item.quantity}}</td>
+							<td class="text-right">{{item.price | currency}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

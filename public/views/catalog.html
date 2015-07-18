@@ -1,0 +1,60 @@
+<div>
+	<div class="alert alert-danger" ng-show="data.error">
+	        您访问的页面出现错误： {{data.error}}
+	    <a href="/index.html" class="alert-link">点击重试</a>
+	</div>
+	
+	<div ng-hide="data.error">
+	    <div class="col-sm-4" style="padding-left: 0;">
+	        <a class="btn btn-block btn-default btn-lg" 
+	        	ng-click="selectCategory()"
+	        	ng-class="getCategoryClass()">所有类别</a>
+	        <a class="btn btn-block btn-default btn-lg" 
+	           ng-repeat="category in data.categories | orderBy: '_id'"
+	           ng-click="selectCategory(category)"
+	           ng-class="getCategoryClass(category)">
+	            {{category.name}}
+	        </a>
+	    </div>
+	    <div class="col-sm-8">
+	        <div class="well row" ng-repeat="book in data.books | range:selectedPage:pageSize">
+	            <div class="col-sm-3">
+	            	<img src="contents/bookimages/nopicture.png" ng-if="!book.pictureUrl" class='img-responsive' />
+                	<img ng-src="contents/bookimages/{{book.pictureUrl}}" ng-if="book.pictureUrl" class="img-responsive" />
+                </div>
+                <div class="col-sm-8">
+                	<div class="book-title">
+                		<a ng-href="#/book/{{book._id}}">{{book.title}}</a>
+                	</div>
+                	<div class="book-publisher">
+                		{{book.publisher}}&nbsp;&nbsp;出版日期：{{book.publishdate | date:"yyyy-MM"}}
+                	</div>
+                	<div class="book_author">
+                		作者：
+                		<span ng-repeat="author in book.authors">
+	                		<span ng-if="author.country">({{author.country}})</span>
+	                		<span>{{author.name}}</span>
+	                	</span>
+                	</div>
+                	<div class="book-price">
+                		原价：<span class="book-listprice">{{book.listprice | currency}}</span>
+                		&nbsp;&nbsp;&nbsp;
+                		优惠价：<span class="book-reducedprice">{{book.reducedprice | currency}}</span>
+                	</div>
+                	<div class="book_buy">
+                		<button class="btn btn-success pull-right" ng-click="addBookToCart(book)">
+                			放入购物车
+			            </button>
+                	</div>
+                </div>
+	        </div>
+	    </div>
+	    <div class="pull-right btn-group">
+	        <a ng-repeat="page in data.books | pageCount:pageSize"
+	           ng-click="selectPage($index+1)" class="btn btn-default"
+	           ng-class="getPageClass($index + 1)">
+	            {{$index+1}}
+	        </a>
+	    </div>
+	</div>
+</div>

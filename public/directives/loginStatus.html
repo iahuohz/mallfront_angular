@@ -1,0 +1,23 @@
+<div class="navbar-text" ng-if="credential.isAuthenticated" style="margin: 10px !important;">
+	<div class="btn-group">
+	  <button type="button" class="btn btn-default btn-sm">欢迎你，{{credential.nick}}</button>
+	  <button type="button" class="btn btn-default btn-sm dropdown-toggle" 
+	  	data-toggle="dropdown">
+	    <span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+	    <li><a href="/user.html#/changepwd">修改密码</a></li>
+	    <li><a href="/user.html#/contact">联系人</a></li>
+	    <li><a href="/user.html#/order">我的订单</a></li>
+	  </ul>	  
+	</div>
+	<a href="#" ng-click="logout()">注销</a>
+</div>
+<div class="navbar-text" ng-if="!(credential.isAuthenticated)">
+	<a href="/#/login">
+		登录
+    </a>
+	<a href="/#/register">
+		注册
+    </a>
+</div>
