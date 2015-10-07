@@ -1,2 +1,0 @@
-{"_id":{"$oid":"55a7c0640b698d4c42dc88c3"},"contacts":[{"_id":{"$oid":"55a9cfd9b17cc6d825d27564"},"address":"北京市海淀区之村路","name":"jerry","phone":"13800138000","postalcode":"100190"},{"_id":{"$oid":"55a9e320b17cc6d825d27567"},"address":"北京市昌平区","name":"jam","phone":"13800138000","postalcode":"102200"}],"name":"iahuohz@sina.com","nick":"iah","password":"111111","status":NumberInt(1)}
-{"_id":{"$oid":"55a851f98edf4e945b63dee8"},"contacts":[],"name":"jam@sina.com","nick":"jam","password":"111111","status":NumberInt(1)}
